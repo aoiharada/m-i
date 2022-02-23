@@ -24,7 +24,15 @@ public class PuzzleObject : MonoBehaviour
         pointworld.z = transform.position.z;
 
         transform.position = pointworld;
+    }
 
-        //this.GetComponent<Rigidbody2D>().isKinematic = false;
+    private void OnMouseUp() {
+        this.GetComponent<Rigidbody2D>().isKinematic = false;
+        GameObject.Find("Player").GetComponent<Player>().PieceEndDrag();
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Game Over");
     }
 }
